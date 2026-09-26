@@ -22,12 +22,15 @@ int main(){
         situation =3;
      }else if(strcmp(input,"price")==0){
         situation =2;
-     }else{
+     }else if(strcmp(input,"ck-system")==0){
+        situation =4;
+     }
+     else{
         situation =1;
      }
     switch(situation){
         case 1:
-        int i;
+        int i=0;
         int signal=0;
         for(i=0;i<3;i++){
             if(strcmp(input,item[i].code)==0){
@@ -48,7 +51,41 @@ int main(){
         case 3:
         printf("Bye~");
         return 0;
+        case 4:
+        printf("your cart:\n");
+        char a[10];
+        int cart[3];
+        for (i=0;i<3;i++){
+            cart[i]=0;
+        }
+        scanf("%s",a);
+        while(strcmp(a,"000")!=0){
+        if(a[0]!='-'){
+            for (i=0;i<3;i++){
+                if(strcmp(a,item[i].code)==0){
+                    cart[i]++;
+                    scanf("%s",a);
+
+                }
+            }
+        }
+        if(a[0] == '-'){
+            char*b=a+1;
+            for (i=0;i<3;i++){
+                if(strcmp(b,item[i].code)==0){
+                    cart[i]--;
+                    scanf("%s",a);
+                }
+            }
+        }
     }
+    for(i=0;i<3;i++){
+        if(cart[i]!=0){
+        printf("%s  %f*%d  %f\n",item[i].name,item[i].price,cart[i],cart[i]*item[i].price);
+        }
+    }
+    break;
 }
     return 0;
+}
 }
