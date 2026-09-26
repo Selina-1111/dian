@@ -11,9 +11,20 @@ int main(){
         {"002","lollipop",0.50},
         {"003","noodles",6.00},
     };
+    printf("please input the code:\n" );
+    char input[20];
+    scanf("%s",input);
     int i;
+    int signal=0;
     for(i=0;i<3;i++){
-        printf("%s,%s,%.2f\n",item[i].code,item[i].name,item[i].price);
+        if(strcmp(input,item[i].code)==0){
+            printf("%s,%.2f\n",item[i].name,item[i].price);
+            signal =1;
+            break;
+        }
+    }
+    if(signal==0){
+        printf("not found");
     }
     return 0;
 }
