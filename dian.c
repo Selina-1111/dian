@@ -12,6 +12,8 @@ int main(){
         {"003","noodles",6.00},
     };        
      char input[20];
+     
+     while(1){
      scanf("%s",input);
      int situation;
      if(strcmp(input,"exit")==0){
@@ -35,14 +37,18 @@ int main(){
         }
     }
         if(signal==0){
-            printf("ERROR:code not found");
+            printf("ERROR:code not found\n");
     }
+        break;
         case 2:
         for(i=0;i<3;i++){
             printf("%s,%s,%.2f\n",item[i].code,item[i].name,item[i].price);
         }
+        break;
         case 3:
         printf("Bye~");
+        return 0;
     }
+}
     return 0;
 }
